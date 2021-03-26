@@ -1,13 +1,15 @@
 dolla = float(input("Enter amount to take charge for: "))
 
-twenties = dolla //20
-ten = (dolla % 20) // 10
-fives = ((dolla % 20) % 10)//5
-ones = ((dolla % 20) % 10) // 1
-quarter = (((dolla % 20) % 10) % 1) // 0.25
-dime = ((((dolla % 20) % 10) % 1) % 0.25) // 0.1
-nickel = (((((dolla % 20) % 10) % 1) % 0.25) % 0.1) // 0.05
-penny = ((((((dolla % 20) % 10) % 1) % 0.25) % 0.1)% 0.05)//0.01
+print("Your change is: ")
+
+twenties = int(dolla // 20)
+ten = int((dolla % 20) // 10)
+fives = int(((dolla % 20) % 10)//5)
+ones = int(((dolla % 20) % 10) // 1)
+quarter = int((((dolla % 20) % 10) % 1) // 0.25)
+dime = int(((((dolla % 20) % 10) % 1) % 0.25) // 0.1)
+nickel = int((((((dolla % 20) % 10) % 1) % 0.25) % 0.1) // 0.05)
+penny = int(((((((dolla % 20) % 10) % 1) % 0.25) % 0.1) % 0.05)//0.01)
 
 print(f'{twenties} twenties')
 print(f'{ten} ten')
