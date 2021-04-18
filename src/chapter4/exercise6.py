@@ -1,13 +1,18 @@
-def compute_pay(hours):
+def compute_pay(hours, rate):
+    """func to calculate the payment for the user when called"""
     try:
         hours = int(hours)
-        rate = int(input("Enter Rate: "))
+        rate = int(rate)
 
-        pay = ((40 * rate) + ((hours - 40) * rate * 1.5))
+        if hours > 44:
+            pay = ((40 * rate) + ((hours - 40) * rate * 1.5))
+        else:
+            pay = hours * rate
         print(float(pay))
 
     except:
         print("Error, Enter a numeric value")
 
 
-compute_pay(input("Enter Hours: "))
+# this is to input user data
+compute_pay(input("Enter Hours: "), rate=input("Enter Rate: "))

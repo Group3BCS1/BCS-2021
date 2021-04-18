@@ -1,22 +1,24 @@
 # This program computes compound interest
 
-# Prompt the user to input the inital investment
-C = int(input('Enter the initial amount of an investment(C): '))
+def investment(c, r, n, t):
+    try:
+        # converting variable data
+        c = int(c)
+        r = float(r)
+        n = int(n)
+        t = int(n)
 
-# Prompt the user to input the yearly rate of interest
-r = float(input('Enter the yearly rate of interest(r): '))
+        # investment formulae
+        p = c * (1 + (r / n) ** t * n)
 
-# Prompt the user to input the number of years until maturation
-t = int(input('Enter the number of years until maturation(t): '))
-
-# Prompt the user to input the number of times the interest is compounded per year
-n = int(input('Enter the number of times the interest is compounded per year(n): '))
-
-
-def investment(C, r, n, t):
-    p = str(round(C * (((1 + (r / n)) ** (t * n))), 2))
-    print('The final value of the investment to the nearest penny is: ', p)
-    return p
+        # rounding off the result and outputting the result
+        print(f"Your final value for investment is {round(p, 2)}")
+        return p
+    except:
+        print("\n \nEnter valid inputs(numerical values)")
 
 
-investment(C, r, n, t)
+investment(c=input('Enter the initial amount of an investment(C): '),
+           r=input('Enter the yearly rate of interest(r): '),
+           n=input('Enter the number of years until maturation(t): '),
+           t=input('Enter the number of times the interest is compounded per year(n): '))
