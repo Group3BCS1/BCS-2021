@@ -25,12 +25,32 @@ def vending():
         """
         select = input("Enter the purchase price (xx.xx) or `q' to quit: ")
 
+        # This exception is to check for value errors
+        try:
+            if select == 'q':
+                exit()
+            else:
+                select = float(select)
+                return select
+        except:
+            print(f'Illegal price: Must be a non-negative multiple of 5 cents.')
+
+
     def select_deposit():
         """This function prompts the user for disposit"""
 
         select = input("Indicate your deposit: ")
         return select
 
+    # initialize constants
+    nickel_deposit = 0.05
+    dimes = 0.1
+    quarters = 0.25
+    one_dollar = 1
+    five_deposit = 5
+
+    #initializing Display to the stock
+    Display()
 
     while True:
         try:
@@ -41,4 +61,8 @@ def vending():
 
 
 
-vending()
+        except:
+            print("Illegal price: Must be a non-negative multiple of 5 cents.")
+
+if __name__ == '__main__':
+    vending()
