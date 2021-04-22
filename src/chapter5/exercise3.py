@@ -1,3 +1,8 @@
+#GROUP3BCS1
+#1. ATWANZIRE TIMOTHY IAN 2020/BCS/026/PS
+#2. AHWERA ATENSA 	2020/BCS/014/PS
+#3. MULIZA TYRONE	2020/BCS/074/PS
+#4. OKELLO JOSHUA	2020/BCS/006
 def vending():
     """This function contains a dictionary and a list to store th"""
     a = {"stock": "Nickels", "number": 25}
@@ -68,9 +73,17 @@ def vending():
                 print("'o' - deposit a one dolla bill")
                 print("'f' - deposit a five dolla bill")
                 print("'c' - cancel the purchase")
-
-
-
+                
+                #initailizing the select deposit func
+                entry = select_deposit()
+                if entry =='n':
+                    bal = s-nickel_deposit
+                    print(bal)
+                if entry == 'd':
+                    bal = d-nickel_deposit
+                    print(bal)
+                if entry == 'q':
+                    bal(bal)
 
 
         except:
