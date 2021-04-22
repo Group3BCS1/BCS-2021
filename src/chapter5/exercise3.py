@@ -18,7 +18,6 @@ def vending():
             print(stock.get("number"), stock.get("stock"))
 
 
-
     def select_stock():
         """This function prompts the user to select stock and also quit
             This exits the program when "q" is entered
@@ -49,6 +48,7 @@ def vending():
     quarters = 0.25
     one_dollar = 1
     five_deposit = 5
+
     #initializing Display to the stock
     Display()
 
@@ -56,6 +56,18 @@ def vending():
         try:
             # a variable to hold the select function
             s = select_stock()
+
+            #making a check if the number entered is a non-negative or a multiple of 0.05
+            if s % 0.05 != 0 and s < 0:
+                print("Illegal price: Must be a non-negative multiple of 5 cents.")
+                select_stock()
+            else:
+                print("'n' - deposit a nickel")
+                print("'d' - deposit a dime")
+                print("'q' - deposit a quarter")
+                print("'o' - deposit a one dolla bill")
+                print("'f' - deposit a five dolla bill")
+                print("'c' - cancel the purchase")
 
 
 
