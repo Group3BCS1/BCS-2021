@@ -25,8 +25,20 @@ def vending():
         """
         select = input("Enter the purchase price (xx.xx) or `q' to quit: ")
 
+    def select_deposit():
+        """This function prompts the user for disposit"""
+
+        select = input("Indicate your deposit: ")
+        return select
 
 
- if __name__ == '__main__':
-    vending()
-   
+    while True:
+        try:
+            # a variable to hold the select function
+            s = select_stock()
+
+
+
+
+
+vending()
