@@ -18,6 +18,7 @@ def vending():
             print(stock.get("number"), stock.get("stock"))
 
 
+
     def select_stock():
         """This function prompts the user to select stock and also quit
             This exits the program when "q" is entered
@@ -48,7 +49,6 @@ def vending():
     quarters = 0.25
     one_dollar = 1
     five_deposit = 5
-
     #initializing Display to the stock
     Display()
 
