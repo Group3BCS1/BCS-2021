@@ -43,6 +43,10 @@ def vending():
         'f' - deposit a five dolla bill
         'c' - cancel the purchase
         """)
+    def convert_entry(price):
+        dolls =price_entry//1
+        cents = (price_entry%1)
+        print(f"Payment due: {dolls: .0f} dollars and {cents * 100:.0f} cents")
 
     Display()
     # main while loop
@@ -60,20 +64,48 @@ def vending():
             # if statement to check the price entry
             if (price_entry > 0) and ((price_entry*100) % 5) == 0:
                 menu()
-                dolls = price_entry//1
-                cents = (price_entry % 1)
-                print(f"Payment due: {dolls: .0f} dollars and {cents * 100:.0f} cents")
+                convert_entry(price_entry)
                 total_pay = 0.00
 
                 while price_entry > total_pay:
-                    dep = input("Indicate your deposit: ")
-                    if dep == 'c':
+                    deposit = input("Indicate your deposit: ")
+                    if deposit == 'c':
                         print("Please take the change below", total_pay)  # Function change
                         break
 
-                    if dep == 'n':
-                        pass
-
+                    if deposit == 'n':
+                        price_entry -= n
+                        n = n + 1
+                        a["number"] -= 1
+                        convert_entry(price)
+                        continue
+                    elif deposit == 'd':
+                        price_entry -= d
+                        d = d + 1
+                        b["number"] -= 1
+                        convert_entry(price)
+                        continue
+                    elif deposit == 'q':
+                        price_entry -= q
+                        d = d + 1
+                        c["number"] -= 1
+                        convert_entry(price)
+                        continue
+                    elif deposit == 'o':
+                        price_entry -= o
+                        o += 1
+                        d["number"] -= 1
+                        convert_entry(price)
+                        continue
+                    elif deposit == 'f':
+                        price_entry -= f
+                        f += 1
+                        e["number"] -= 1
+                        convert_entry(price)
+                    else:
+                        print("Illegal selection:", deposit)
+                        convert_entry(price_entry)
+                        continue
 
 
             else:
