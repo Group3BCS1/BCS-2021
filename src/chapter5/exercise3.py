@@ -44,12 +44,6 @@ def vending():
         'c' - cancel the purchase
         """)
 
-    def due_payments(select):
-        """Function to convert the user's entry to dollars and cents"""
-        one = select // 1  # Gives number of dollars
-        one = select % 1  # Gives number of cents
-        print(f"Payment due: {a:.0f} dollars and {b * 100:.0f} cents")
-
     Display()
     # main while loop
 
@@ -66,13 +60,19 @@ def vending():
             # if statement to check the price entry
             if (price_entry > 0) and ((price_entry*100) % 5) == 0:
                 menu()
-                due_payments(price_entry)
+                dolls = price_entry//1
+                cents = (price_entry % 1)
+                print(f"Payment due: {dolls: .0f} dollars and {cents * 100:.0f} cents")
                 total_pay = 0.00
+
                 while price_entry > total_pay:
                     dep = input("Indicate your deposit: ")
                     if dep == 'c':
                         print("Please take the change below", total_pay)  # Function change
                         break
+
+                    if dep == 'n':
+                        pass
 
 
 
