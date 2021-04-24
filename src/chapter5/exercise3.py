@@ -13,17 +13,17 @@ def vending():
     d = {"stock": "Fives", "number": 0}
     e = {"stock": "Ones", "number": 0}
 
-    stocks = [a, b, c, d, e]
+    goods = [a, b, c, d, e]
 
     print("================================= START =======================================")
     print("Welcome to our vending machine change maker program \nChange maker initialized.")
 
     # Display Function
-    def Display():
+    def display():
         """This function displays the stock to the user"""
         # For loop
-        for stock in stocks:
-            print(stock.get("number"), stock.get("stock"))
+        for good in goods:
+            print(good.get("number"), good.get("stock"))
 
     # initialize constants
     n = 0.05
@@ -32,6 +32,7 @@ def vending():
     o = 1
     f = 5
 
+    # function for the menu
     def menu():
         print("""
         Deposit Menu
@@ -43,12 +44,13 @@ def vending():
         'c' - cancel the purchase
         """)
 
+    # function to convert float numbers
     def convert_entry(px):
         dolls = px // 1
         cents = (px % 1)
         print(f"Payment due: {dolls: .0f} dollars and {cents * 100:.0f} cents")
 
-    Display()
+    display()
     # main while loop
 
     while True:
@@ -65,7 +67,7 @@ def vending():
             if (price > 0) and (((price * 100) % 5) == 0):
                 menu()
                 convert_entry(price_entry)
-                dep_sum = 0.00
+                dep_sum = 0
 
                 while price > dep_sum:
                     deposit = input("Indicate your deposit: ")
@@ -73,42 +75,49 @@ def vending():
                         print("Please take the change below", dep_sum)
 
                         break
-                    elif deposit == 'n':
-                        price -= n
-                        dep_sum += 0.05
-                        a["number"] = a["number"] + 1
-                        convert_entry(price)
-                        continue
-                    elif deposit == 'd':
-                        price = price - d
-                        dep_sum = dep_sum + 0.1
-                        b["number"] = b["number"] + 1
-                        convert_entry(price)
-                        continue
-                    elif deposit == 'q':
-                        price = price - q
-                        dep_sum = dep_sum + 0.25
-                        c["number"] = c["number"] + 1
-                        convert_entry(price)
-                        continue
-                    elif deposit == 'o':
-                        price = price - o
-                        dep_sum = dep_sum + 1
-                        d["number"] = c["number"] + 1
-                        convert_entry(price)
-                        continue
-                    elif deposit == 'f':
-                        price = price - f
-                        dep_sum = dep_sum + 5
-                        e["number"] = ["number"] + 1
-                        convert_entry(price)
-                        continue
                     else:
-                        print("Illegal selection:", deposit)
-                        convert_entry(price_entry)
-                        continue
+                        if deposit == 'n':
+                            price -= n   # updating price
+                            dep_sum += n    # updating dep_sum
+                            a["number"] = a["number"] + 1   # updating the stock
+                            convert_entry(price)
+                            continue
+                        elif deposit == 'd':
+                            price -= d
+                            dep_sum += d
+                            b["number"] += 1
+                            convert_entry(price)
+                            continue
+                        elif deposit == 'q':
+                            price -= q
+                            dep_sum += q
+                            c["number"] += 1
+                            convert_entry(price)
+                            continue
+                        elif deposit == 'o':
+                            price -= o
+                            dep_sum += o
+                            d["number"] += 1
+                            convert_entry(price)
+                            continue
+                        elif deposit == 'f':
+                            price -= f
+                            dep_sum += f
+                            e["number"] += 1
+                            convert_entry(price)
+                            continue
+                        else:
+                            print("Illegal selection:", deposit)
+                            convert_entry(price_entry)
+                            continue
                 if dep_sum == price:
                     print("No change!")
+                    for good in goods:
+                        print(good.get("number"), good.get("stock"))
+                else:
+                    print("Please take your change.")
+                    for good in goods:
+                        print(good.get("number"), good.get("stock"))
 
             else:
                 print("Illegal price: Must be a non-negative multiple of 5 cents.")
