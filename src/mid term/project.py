@@ -1,11 +1,11 @@
-import itertools
-
-
 # main function
-def water_bill():
-    print("==========================RESTART==========================")
-    code = input("Enter customer's code: ")
-    code = code.lower()
+while True:
+    print("\n==========================RESTART==========================")
+    try:
+    	code = input("Enter customer's code: ")
+    	code = code.lower()
+    except:
+    	print("invalid code")
     initial_reading = int(input("Enter beginning meter reading: "))
     final_reading = int(input("Enter Ending meter reading: "))
     print(" ")
@@ -36,33 +36,37 @@ def water_bill():
         ten_million = 10000000
         if code == "r":
             amount = 5.00 + (0.0005 * g)
+            amount = float(amount)
             print(f"Amount billed: $ {round(amount, 2)}")
         else:
             if code == "c":
                 if g <= four_million:
                     amount = 1000
+                    amount = float(amount)
                     print(f"Amount billed: $ {round(amount, 2)}")
                 else:
                     if g > four_million:
                         addition_units = g - four_million
                         amount = 1000 + (0.00025 * addition_units)
+                        amount = float(amount)
                         print(f"Amount billed: $ {round(amount, 2)}")
             else:
                 if code == "i":
                     if g <= four_million:
                         amount = 1000
+                        amount = float(amount)
                         print(f"Amount billed: $ {round(amount, 2)}")
                     else:
                         if four_million < g < ten_million:
                             amount = 2000
+                            amount = float(amount)
                             print(f"Amount billed: $ {round(amount, 2)}")
                         else:
                             if g > ten_million:
                                 addition_units = g - ten_million
                                 amount = 2000 + (addition_units * 0.00025)
+                                amount = float(amount)
                                 print(f"Amount billed: $ {round(amount, 2)}")
 
-    itertools.repeat(units(), 4)
 
-
-water_bill()
+    units()
