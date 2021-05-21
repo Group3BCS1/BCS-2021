@@ -77,9 +77,10 @@ def process_file(open_object):
         max_value = max(years)
         min_value = min(years)
 
+        # zipping the countries list and years list
         dic = dict(zip(countries, years))
-        mx =[k for k, v in dic.items() if v == max_value]
-        mn =[k for k,v in dic.items() if v == min_value]
+        mx = [k for k, v in dic.items() if v == max_value]
+        mn = [k for k, v in dic.items() if v == min_value]
         print(f"The following have the maximum value of {max_value}")
         for i in mx:
             print(i)
@@ -88,12 +89,14 @@ def process_file(open_object):
             print(i)
     except:
         print("Invalid Inputs")
-
+    if count == 0:
+        print("Year Does not exit!")
 
 def main():
     """This func calls the open_file function and process_file function"""
     handle = open_file()
     process_file(handle)
+    handle.close()
 
 
 main()
