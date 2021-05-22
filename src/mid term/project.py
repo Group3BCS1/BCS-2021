@@ -2,18 +2,20 @@
 while True:
     print("\n==========================RESTART==========================")
     try:
-    	code = input("Enter customer's code: ")
-    	code = code.lower()
+        code = input("Enter customer's code: ")
+        code = code.lower()
     except:
-    	print("invalid code")
+        print("invalid code")
     initial_reading = int(input("Enter beginning meter reading: "))
     final_reading = int(input("Enter Ending meter reading: "))
     print(" ")
+
 
     def prompt_readings():
         """This function displays initial and final readings to the user"""
         print(f"Beginning Meter Reading:  {initial_reading: 09}")
         print(f"Ending Meter Reading: {final_reading: 09}")
+
 
     def reading():
         """Function to Compute gallons of water used"""
@@ -29,6 +31,7 @@ while True:
                 gallons = gallons / 10
                 print(f"Gallons of water used {gallons}")
         return gallons
+
 
     def units():
         g = reading()
