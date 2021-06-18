@@ -1,20 +1,19 @@
-fname = input('Enter the file name: ')
+prompt = input('Enter the File Name: ')
 try:
-  fhand = open(fname)
+	handle = open(prompt)
 except:
-  print('File cannot be opened:', fname)
-  exit()
+	exit('Can\'t open the file')
 
-lineslist=[]
-domaindict={}
+address_dict = {}
+for line in handle:
+	lst = line.split()
+	if len(lst) > 3 and line.startswith('From'):
+		email_lst = lst[1].split('@')
+		address = email_lst[1]
 
-for line in fhand:
-  lineslist = line.split()
-  if line.startswith('From '):
-    email=lineslist[1]
-    domain = email.split('@')[1] #.split creates list, and [1] returns 2nd item in list
-    if domain not in domaindict:
-      domaindict[domain] = 1
-    else:
-      domaindict[domain] += 1
-print (domaindict)
+	#adding files to the dictionary
+		if address not in address_dict:
+			address_dict[address] = 1
+		else:
+			address_dict[address] += 1
+print(address_dict)

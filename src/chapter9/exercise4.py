@@ -1,25 +1,24 @@
 fname = input('Enter the file name: ')
 try:
-    fhand = open(fname)
+  handle = open(fname)
 except:
-    print('File cannot be opened:', fname)
-    exit()
+  print('File cannot be opened:', fname)
+  exit()
 
-lineslist = []
-emaildict = {}
-
-for line in fhand:
-    lineslist = line.split()
-    if line.startswith('From '):
-        email = lineslist[1]
-        if email not in emaildict:
-            emaildict[email] = 1
-        else:
-            emaildict[email] += 1
-
+emails = {}
+for line in handle:
+  lst = line.split()
+  if len(lst) > 3 and line.startswith('From'):
+    email = lst[1]
+    #adding files to the dictionary
+    if email not in emails:
+      emails[email] = 1
+    else:
+      emails[email] += 1
+# checking for the large number
 largest = None
-for email in emaildict:
-    count = emaildict[email]
+for email in emails:
+    count = emails[email]
     if largest is None or count > largest :
         largest = count
         largestemail = email
